@@ -1,0 +1,20 @@
+/* トップ画面 */
+/*サイドメニュー*/
+div#divmenu {  
+    width: 500px;  
+    background: #F7F7F7;  
+    padding: 10px;  
+    position: fixed;  
+    z-index: 20;
+    height: 100%;
+}
+
+/*コンテンツ*/
+div#divcontent {
+	width:100%;
+    padding: 95px;  
+    position: fixed;  
+    top: -110px;  
+    z-index: 20; 
+    margin: 98px 600px
+}
