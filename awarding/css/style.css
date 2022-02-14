@@ -1,0 +1,137 @@
+#screenshot-area
+{
+    position: relative;
+}
+
+#screenshot-area div.text .name
+{
+    position: absolute;
+    width: 50%;
+    left: 165px; 
+    height:50%;
+    top: calc(50% - 240px); 
+    text-align: left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 40px;
+    line-height: 50px;
+    font-family: serif;
+}
+
+#screenshot-area div.text .year
+{
+    position: absolute;
+    width: 50%;
+    left: 260px; 
+    height:50%;
+    top: calc(50% - -155px); 
+    text-align:left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 30px;
+    line-height: 50px;
+    font-family: serif;
+}
+
+#screenshot-area div.text .month
+{
+    position: absolute;
+    width: 50%;
+    left: 360px; 
+    height:50%;
+    top: calc(50% - -155px); 
+    text-align:left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 30px;
+    line-height: 50px;
+    font-family: serif;
+}
+
+#screenshot-area div.text .day
+{
+    position: absolute;
+    width: 50%;
+    left: 430px; 
+    height:50%;
+    top: calc(50% - -155px); 
+    text-align:left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 30px;
+    line-height: 50px;
+    font-family: serif;
+}
+
+#screenshot-area div.text .support
+{
+    position: absolute;
+    width: 50%;
+    left: 280px; 
+    height:50%;
+    top: calc(50% - -210px); 
+    text-align:left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 35px;
+    line-height: 50px;
+    font-family: serif;
+}
+
+@media (min-width: 1000px) {
+  input.pc_award_name{
+    position: absolute;
+    width: 400px;
+    height: 55px;
+    left: 1200px;
+    top: 200px;
+  }
+  select#year{
+    position: absolute;
+    width: 100px;
+    height: 55px;
+    left: 1200px;
+    top: 355px;
+    font-size:25px;
+  }
+
+  select#month{
+    position: absolute;
+    width: 80px;
+    height: 55px;
+    left: 1370px;
+    top: 355px;
+    font-size:25px;
+  }
+
+  select#day{
+    position: absolute;
+    width: 80px;
+    height: 55px;
+    left: 1525px;
+    top: 355px;
+    font-size:25px;
+  }
+  input.pc_award_support{
+    position: absolute;
+    width: 400px;
+    height: 55px;
+    left: 1200px;
+    top: 525px;
+  }
+  label.pc_award_sex1{
+    position: absolute;
+    left: 1200px;
+    top: 650px;
+  }
+  label.pc_award_sex2{
+    position: absolute;
+    left: 1270px;
+    top: 650px;
+  }
+  p.create_pic{
+    position: absolute;
+    left: 1200px;
+    top: 755px;
+  }
+}
