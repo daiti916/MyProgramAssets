@@ -1,0 +1,106 @@
+#screenshot-area
+{
+    position: relative;
+}
+
+#screenshot-area div.text .name
+{
+    position: absolute;
+    width: 50%;
+    left: 345px; 
+    height:50%;
+    top: calc(50% - 150px); 
+    text-align: left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 35px;
+    line-height: 50px;
+}
+
+#screenshot-area div.text .content
+{
+    position: absolute;
+    width: 50%;
+    left: 345px; 
+    height:50%;
+    top: calc(50% - 45px); 
+    text-align:left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 30px;
+    line-height: 50px;
+}
+
+#screenshot-area div.text .support
+{
+    position: absolute;
+    width: 50%;
+    left: 345px; 
+    height:50%;
+    top: calc(50% - -75px); 
+    text-align:left; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 30px;
+    line-height: 50px;
+}
+
+img.footer_logo{
+    position: absolute;
+    width: 45%;
+    top:570px;
+    left:370px;
+}
+@media (min-width: 1000px) {
+  input.pc_award_name{
+    position: absolute;
+    width: 400px;
+    height: 55px;
+    left: 1200px;
+    top: 150px;
+  }
+  textarea.pc_award_content{
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 1200px;
+    top: 250px;
+  }
+  input.pc_award_support{
+    position: absolute;
+    width: 400px;
+    height: 55px;
+    left: 1200px;
+    top: 400px;
+  }
+  label.pc_award_sex1{
+    position: absolute;
+    left: 1200px;
+    top: 500px;
+  }
+  label.pc_award_sex2{
+    position: absolute;
+    left: 1270px;
+    top: 500px;
+  }
+  input.select_pic{
+    position: absolute;
+    left: 1200px;
+    top: 550px;
+  }
+  input.up_pic{
+    position: absolute;
+    left: 1200px;
+    top: 600px;
+  }
+  p.create_pic{
+    position: absolute;
+    left: 1200px;
+    top: 650px;
+  }
+  input.pic_delete{
+    position: absolute;
+    left: 1350px;
+    top: 600px;
+  }
+}
