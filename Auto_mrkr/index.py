@@ -4,15 +4,31 @@ import input
 
 # 画面作成
 tk = tkinter.Tk()
-tk.geometry('560x250') # 画面サイズの設定
+tk.geometry('300x50') # 画面サイズの設定
 tk.title('自動出品投稿ツール') # 画面タイトルの設定
 
 def input_kizi_event():
-    input.input_data()
+    time_data = time_data_box.get()
+    cnt_data = cnt_data_box.get()
+    input.input_data(time_data,cnt_data)
 
+
+time_label = tkinter.Label(text='時間：')
+time_label.place(x=30, y=20)
+
+time_data_box = tkinter.Entry(width=5)
+time_data_box.insert(0, '11')
+time_data_box.place(x=70, y=20)
+
+cnt_num_label = tkinter.Label(text='回数：')
+cnt_num_label.place(x=120, y=20)
+
+cnt_data_box = tkinter.Entry(width=5)
+cnt_data_box.insert(0, '2')
+cnt_data_box.place(x=160, y=20)
 
 button = tkinter.Button(text="投稿開始",command=input_kizi_event)
-button.place(x=240, y=140)
+button.place(x=210, y=15)
 
 tk.mainloop()
 
