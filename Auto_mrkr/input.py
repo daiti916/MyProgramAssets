@@ -1,19 +1,17 @@
 def input_data(time_data,cnt_data):
     import webbrowser
     import time
-    import datetime
     import schedule
     import pyperclip
     import pyautogui
-    import csv
 
     page_load_time = 3
     action_wait = 1
 
     job_time = str(time_data) + ":00"
 
-    print("設定時間：" + str(job_time))
-    print("投稿回数：" + str(cnt_data) + "回")
+    print("設定時間：　" + str(job_time))
+    print("投稿回数：　" + str(cnt_data) + "回")
 
     def job():
         for cnt in(range(int(cnt_data))):
