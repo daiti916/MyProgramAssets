@@ -36,8 +36,6 @@ def input_event():
             import errno
 
             disp_status = True
-            page_load_time = 3
-            action_wait = 1
 
             if disp_status:
 
@@ -90,6 +88,10 @@ def input_event():
                 # 下書き一番上のデータ座標
                 draft_up_x = int(config_ini['DEFAULT']['draft_up_x'])
                 draft_up_y = int(config_ini['DEFAULT']['draft_up_y'])
+                
+                
+                page_load_time = int(config_ini['DEFAULT']['page_load_time'])
+                action_wait = int(config_ini['DEFAULT']['action_wait'])
 
                 for cnt in(range(int(cnt_num))):
                     print(str(set) + " : " + str(cnt_num) + "回投稿中 : " +str(int(cnt) + 1) + "回目投稿開始")
@@ -156,6 +158,8 @@ def input_event():
 
                         # ページを閉じる
                         pyautogui.hotkey('ctrl', 'w')
+
+                        time.sleep(action_wait)
                         break
                     if end_status == 1:
                         break
