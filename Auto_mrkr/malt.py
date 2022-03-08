@@ -93,6 +93,9 @@ def input_event():
                 page_load_time = int(config_ini['DEFAULT']['page_load_time'])
                 action_wait = int(config_ini['DEFAULT']['action_wait'])
 
+                # 定義
+                end_status = 0
+
                 for cnt in(range(int(cnt_num))):
                     print(str(set) + " : " + str(cnt_num) + "回投稿中 : " +str(int(cnt) + 1) + "回目投稿開始")
                     # ブラウザを開く。
