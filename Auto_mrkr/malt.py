@@ -2,6 +2,7 @@
 import tkinter
 import threading
 import datetime
+import csv
 
 start_flag = False
 quitting_flag = False
@@ -79,6 +80,25 @@ def input_event():
 
                 config_ini.read(config_ini_path, encoding='sjis')
                 disp_status = False
+
+                # 時間 / 回数用配列
+                time_cnt_data = []
+                time_cnt_data = [
+                    [time1_data_box.get(),cnt1_data_box.get()]
+                    ,[time2_data_box.get(),cnt2_data_box.get()]
+                    ,[time3_data_box.get(),cnt3_data_box.get()]
+                    ,[time4_data_box.get(),cnt4_data_box.get()]
+                    ,[time5_data_box.get(),cnt5_data_box.get()]
+                ]
+                
+                # 時間 / 回数記録
+                with open('./set/setfile.csv', 'w') as f:
+                    print(str(time_cnt_data[0][0]) + "," + str(time_cnt_data[0][1]), file=f)
+                    print(str(time_cnt_data[1][0]) + "," + str(time_cnt_data[1][1]), file=f)
+                    print(str(time_cnt_data[2][0]) + "," + str(time_cnt_data[2][1]), file=f)
+                    print(str(time_cnt_data[3][0]) + "," + str(time_cnt_data[3][1]), file=f)
+                    print(str(time_cnt_data[4][0]) + "," + str(time_cnt_data[4][1]), file=f)
+                    f.close()
 
             def job(cnt_num,set):
                 # 下書き存在有無座標
@@ -246,13 +266,19 @@ if end_date < dt_now:
 
     lbl.place(x=75, y=90)
 else:
+    time_data = []
+    with open('./set/setfile.csv') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            time_data.append(row)
+
     # ----- 出品時間 ----- #
     # 出品1時間
     time1_label = tkinter.Label(text='時間1：')
     time1_label.place(x=30, y=20)
 
     time1_data_box = tkinter.Entry(width=7)
-    time1_data_box.insert(0, '11:20')
+    time1_data_box.insert(0, time_data[0][0])
     time1_data_box.place(x=80, y=20)
 
     # 出品2時間
@@ -260,7 +286,7 @@ else:
     time2_label.place(x=30, y=60)
 
     time2_data_box = tkinter.Entry(width=7)
-    time2_data_box.insert(0, '12:30')
+    time2_data_box.insert(0, time_data[1][0])
     time2_data_box.place(x=80, y=60)
 
     # 出品3時間
@@ -268,7 +294,7 @@ else:
     time3_label.place(x=30, y=100)
 
     time3_data_box = tkinter.Entry(width=7)
-    time3_data_box.insert(0, '15:30')
+    time3_data_box.insert(0, time_data[2][0])
     time3_data_box.place(x=80, y=100)
 
     # 出品4時間
@@ -276,7 +302,7 @@ else:
     time4_label.place(x=30, y=140)
 
     time4_data_box = tkinter.Entry(width=7)
-    time4_data_box.insert(0, '17:30')
+    time4_data_box.insert(0, time_data[3][0])
     time4_data_box.place(x=80, y=140)
 
     # 出品5時間
@@ -284,9 +310,8 @@ else:
     time5_label.place(x=30, y=180)
 
     time5_data_box = tkinter.Entry(width=7)
-    time5_data_box.insert(0, '21:30')
+    time5_data_box.insert(0, time_data[4][0])
     time5_data_box.place(x=80, y=180)
-
 
     # ----- 投稿回数 ----- #
     # 回数1
@@ -294,7 +319,7 @@ else:
     cnt1_num_label.place(x=140, y=20)
 
     cnt1_data_box = tkinter.Entry(width=5)
-    cnt1_data_box.insert(0, '2')
+    cnt1_data_box.insert(0, time_data[0][1])
     cnt1_data_box.place(x=190, y=20)
 
 
@@ -303,7 +328,7 @@ else:
     cnt2_num_label.place(x=140, y=60)
 
     cnt2_data_box = tkinter.Entry(width=5)
-    cnt2_data_box.insert(0, '2')
+    cnt2_data_box.insert(0, time_data[1][1])
     cnt2_data_box.place(x=190, y=60)
 
     # 回数3
@@ -311,7 +336,7 @@ else:
     cnt3_num_label.place(x=140, y=100)
 
     cnt3_data_box = tkinter.Entry(width=5)
-    cnt3_data_box.insert(0, '2')
+    cnt3_data_box.insert(0, time_data[2][1])
     cnt3_data_box.place(x=190, y=100)
 
     # 回数4
@@ -319,7 +344,7 @@ else:
     cnt4_num_label.place(x=140, y=140)
 
     cnt4_data_box = tkinter.Entry(width=5)
-    cnt4_data_box.insert(0, '2')
+    cnt4_data_box.insert(0, time_data[3][1])
     cnt4_data_box.place(x=190, y=140)
 
     # 回数5
@@ -327,7 +352,7 @@ else:
     cnt5_num_label.place(x=140, y=180)
 
     cnt5_data_box = tkinter.Entry(width=5)
-    cnt5_data_box.insert(0, '2')
+    cnt5_data_box.insert(0, time_data[4][1])
     cnt5_data_box.place(x=190, y=180)
 
 
