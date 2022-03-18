@@ -3,6 +3,23 @@ import tkinter
 import threading
 import datetime
 import csv
+import configparser
+import os
+import errno
+
+# --------------------------------------------------
+# configparserの宣言とiniファイルの読み込み
+# --------------------------------------------------
+config_ini = configparser.ConfigParser()
+config_ini_path = 'config/config.ini'
+# 指定したiniファイルが存在しない場合、エラー発生
+if not os.path.exists(config_ini_path):
+    raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), config_ini_path)
+
+config_ini.read(config_ini_path, encoding='sjis')
+
+first_x = int(config_ini['DEFAULT']['first_x'])
+first_y = int(config_ini['DEFAULT']['first_y'])
 
 start_flag = False
 quitting_flag = False
@@ -15,7 +32,7 @@ end_date = datetime.datetime(dict_end_date["年"], dict_end_date["月"], dict_en
 
 # メインウィンドウを作成
 app = tkinter.Tk()
-app.geometry("400x230+1300+250")
+app.geometry("400x230+"+str(first_x)+"+"+str(first_y))
 app.title('メルカリ：自動出品投稿ツール') # 画面タイトルの設定
 
 # タイマー
@@ -32,12 +49,9 @@ def input_event():
             import schedule
             import pyperclip
             import pyautogui
-            import configparser
-            import os
-            import errno
 
             disp_status = True
-
+            
             if disp_status:
 
                 job1_time = time1_data_box.get()+str(":00")
@@ -69,16 +83,6 @@ def input_event():
                 print("設定5：回数：　" + str(cnt5_data) + "回")
                 print("---------------------------------------")
 
-                # --------------------------------------------------
-                # configparserの宣言とiniファイルの読み込み
-                # --------------------------------------------------
-                config_ini = configparser.ConfigParser()
-                config_ini_path = 'config/config.ini'
-               # 指定したiniファイルが存在しない場合、エラー発生
-                if not os.path.exists(config_ini_path):
-                    raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), config_ini_path)
-
-                config_ini.read(config_ini_path, encoding='sjis')
                 disp_status = False
 
                 # 時間 / 回数用配列
@@ -101,6 +105,11 @@ def input_event():
                     f.close()
 
             def job(cnt_num,set):
+                # スクリーンセーバー解除の為、マウス移動
+                # 現在位置から(100,100)だけ移動
+                pyautogui.move(100,100)
+                time.sleep(action_wait)
+                
                 # 下書き存在有無座標
                 draft_check_x = int(config_ini['DEFAULT']['draft_check_x'])
                 draft_check_y = int(config_ini['DEFAULT']['draft_check_y'])
