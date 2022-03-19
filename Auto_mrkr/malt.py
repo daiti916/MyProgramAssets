@@ -104,12 +104,7 @@ def input_event():
                     print(str(time_cnt_data[4][0]) + "," + str(time_cnt_data[4][1]), file=f)
                     f.close()
 
-            def job(cnt_num,set):
-                # スクリーンセーバー解除の為、マウス移動
-                # 現在位置から(100,100)だけ移動
-                pyautogui.move(100,100)
-                time.sleep(action_wait)
-                
+            def job(cnt_num,set):                
                 # 下書き存在有無座標
                 draft_check_x = int(config_ini['DEFAULT']['draft_check_x'])
                 draft_check_y = int(config_ini['DEFAULT']['draft_check_y'])
@@ -124,6 +119,11 @@ def input_event():
 
                 # 定義
                 end_status = 0
+
+                # スクリーンセーバー解除の為、マウス移動
+                # 現在位置から(100,100)だけ移動
+                pyautogui.move(100,100)
+                time.sleep(action_wait)
 
                 for cnt in(range(int(cnt_num))):
                     print(str(set) + " : " + str(cnt_num) + "回投稿中 : " +str(int(cnt) + 1) + "回目投稿開始")
