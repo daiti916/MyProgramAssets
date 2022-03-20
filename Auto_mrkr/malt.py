@@ -49,6 +49,7 @@ def input_event():
             import schedule
             import pyperclip
             import pyautogui
+            import random
 
             disp_status = True
             
@@ -104,6 +105,14 @@ def input_event():
                     print(str(time_cnt_data[4][0]) + "," + str(time_cnt_data[4][1]), file=f)
                     f.close()
 
+            def mouse_move():
+                # スクリーンセーバー解除の為、マウス移動
+                # 現在位置から(100,100)だけ移動
+                x = random.randint(50,100)
+                y = random.randint(50,100)
+                print("※マウス移動：スクリーンセーバー対策")
+                pyautogui.moveTo(x,y,1)
+
             def job(cnt_num,set):                
                 # 下書き存在有無座標
                 draft_check_x = int(config_ini['DEFAULT']['draft_check_x'])
@@ -119,11 +128,6 @@ def input_event():
 
                 # 定義
                 end_status = 0
-
-                # スクリーンセーバー解除の為、マウス移動
-                # 現在位置から(100,100)だけ移動
-                pyautogui.move(100,100)
-                time.sleep(action_wait)
 
                 for cnt in(range(int(cnt_num))):
                     print(str(set) + " : " + str(cnt_num) + "回投稿中 : " +str(int(cnt) + 1) + "回目投稿開始")
@@ -198,6 +202,10 @@ def input_event():
     
                 print("⇒　出品作業終了")
                 print("---------------------------------------")
+
+            # 〇分ごとに実行
+            mouse_time = int(config_ini['DEFAULT']['mouse_time'])
+            schedule.every(mouse_time).minutes.do(mouse_move)
         
             # ----- 5スケジュール設定 -----
             schedule.every().day.at(job1_time).do(job,cnt1_data,"設定1")
@@ -205,6 +213,7 @@ def input_event():
             schedule.every().day.at(job3_time).do(job,cnt3_data,"設定3")
             schedule.every().day.at(job4_time).do(job,cnt4_data,"設定4")
             schedule.every().day.at(job5_time).do(job,cnt5_data,"設定5")
+
     
             # 稼働中：フル稼働
             while start_flag:
