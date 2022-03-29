@@ -105,14 +105,6 @@ def input_event():
                     print(str(time_cnt_data[4][0]) + "," + str(time_cnt_data[4][1]), file=f)
                     f.close()
 
-            def mouse_move():
-                # スクリーンセーバー解除の為、マウス移動
-                # 現在位置から(100,100)だけ移動
-                x = random.randint(50,100)
-                y = random.randint(50,100)
-                print("※マウス移動：スクリーンセーバー対策")
-                pyautogui.moveTo(x,y,1)
-
             def job(cnt_num,set):                
                 # 下書き存在有無座標
                 draft_check_x = int(config_ini['DEFAULT']['draft_check_x'])
@@ -203,10 +195,6 @@ def input_event():
                 print("⇒　出品作業終了")
                 print("---------------------------------------")
 
-            # 〇分ごとに実行
-            mouse_time = int(config_ini['DEFAULT']['mouse_time'])
-            schedule.every(mouse_time).minutes.do(mouse_move)
-        
             # ----- 5スケジュール設定 -----
             schedule.every().day.at(job1_time).do(job,cnt1_data,"設定1")
             schedule.every().day.at(job2_time).do(job,cnt2_data,"設定2")
